@@ -62,11 +62,7 @@ public abstract class BaseRefresh extends LinearLayout implements IBaseRefresh {
     }
 
 
-    /**
-     * 移动时 动态设置headerView高度
-     *
-     * @param height
-     */
+
     public void setVisibleHeight(int height) {
         if (height < 0) height = 0;
         LayoutParams lp = (LayoutParams) mContainerView.getLayoutParams();
@@ -75,11 +71,6 @@ public abstract class BaseRefresh extends LinearLayout implements IBaseRefresh {
         ViewCompat.offsetTopAndBottom(this, height);
     }
 
-    /**
-     * 移动动画
-     *
-     * @param destHeight
-     */
     protected void smoothScrollTo(int destHeight) {
         ValueAnimator animator = ValueAnimator.ofInt(getVisibleHeight(), destHeight);
         animator.setDuration(300).start();
@@ -99,10 +90,5 @@ public abstract class BaseRefresh extends LinearLayout implements IBaseRefresh {
         return lp.height;
     }
 
-    /**
-     * layout view
-     *
-     * @return
-     */
     public abstract View getContainerView(LayoutInflater inflater);
 }

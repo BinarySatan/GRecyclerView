@@ -9,7 +9,6 @@ import com.it.binarysatan.library.recyclerview.ref.IRefreshHeader;
 
 /**
  * @author BinarySatan
- * @Description
  */
 public abstract class BaseRefreshHeader extends BaseRefresh implements IRefreshHeader {
 
@@ -32,7 +31,7 @@ public abstract class BaseRefreshHeader extends BaseRefresh implements IRefreshH
     public void onMove(float delta) {
         if (getVisibleHeight() > 0 || delta > 0) {
             setVisibleHeight((int) delta + getVisibleHeight());
-            if (mState <= STATE_RELEASE_TO_REFRESH) { // 未处于刷新状态，更新箭头
+            if (mState <= STATE_RELEASE_TO_REFRESH) {
                 if (getVisibleHeight() > mMeasuredHeight) {
                     setState(STATE_RELEASE_TO_REFRESH);
                     mState = STATE_RELEASE_TO_REFRESH;
@@ -56,7 +55,7 @@ public abstract class BaseRefreshHeader extends BaseRefresh implements IRefreshH
             isOnRefresh = true;
         }
 
-        int destHeight = 0; // default: 松开手指时 refreshHeader 应该到达的高度
+        int destHeight = 0;
         if (mState == STATE_REFRESHING) {
             destHeight = mMeasuredHeight;
         }
@@ -76,9 +75,7 @@ public abstract class BaseRefreshHeader extends BaseRefresh implements IRefreshH
         }, 200);
     }
 
-    /**
-     * 重置状态
-     */
+
     public void reset() {
         smoothScrollTo(0);
         new Handler().postDelayed(new Runnable() {

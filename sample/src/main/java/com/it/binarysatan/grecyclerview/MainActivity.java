@@ -2,6 +2,7 @@ package com.it.binarysatan.grecyclerview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.it.binarysatan.library.BaseAdapter;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
          */
 
         mGRecyclerView = (GRecyclerView) findViewById(R.id.grecyclerview);
+        mGRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mGRecyclerView.setAdapter(new BaseAdapter<String>(this, R.layout.listitem, mDatas, mGRecyclerView) {
             @Override
             public void updateUI(BaseHolder holder, int position, String data) {
@@ -88,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
 //                tv.setText(data);
 //            }
 //        });
-
 
 
         /**

@@ -20,7 +20,6 @@ public class RefreshFooter extends BaseRefreshFooter {
     public RefreshFooter(final Context context) {
         super(context);
         mTv = (TextView) findViewById(R.id.tv);
-        mTv.setText("上啦加载");
     }
 
 
@@ -33,19 +32,19 @@ public class RefreshFooter extends BaseRefreshFooter {
     public void setState(int state) {
         switch (state) {
             case IRefreshFooter.STATE_LOADING:
-                mTv.setText("正在加载");
+                mTv.setText("loading");
                 break;
             case IRefreshFooter.STATE_COMPLETE:
-                mTv.setText("加载完成");
+                mTv.setText("load complete");
                 break;
             case IRefreshFooter.STATE_NOMORE:
-                mTv.setText("无更多数据");
+                mTv.setText("no more data");
                 break;
             case IRefreshFooter.STATE_NORMAL:
-                mTv.setText("上拉加载");
+                mTv.setText(" down loading");
                 break;
             case IRefreshFooter.STATE_RELEASE_LOAD:
-                mTv.setText("释放加载");
+                mTv.setText("release loading");
                 break;
 
         }

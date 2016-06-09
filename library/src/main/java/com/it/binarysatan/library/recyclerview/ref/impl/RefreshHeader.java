@@ -12,7 +12,6 @@ import com.it.binarysatan.library.recyclerview.ref.IRefreshHeader;
 
 /**
  * @author BinarySatan
- *         <p></p>
  */
 public class RefreshHeader extends BaseRefreshHeader {
 
@@ -36,16 +35,16 @@ public class RefreshHeader extends BaseRefreshHeader {
     public void setState(int state) {
         switch (state) {
             case IRefreshHeader.STATE_NORMAL:
-                mTv.setText("下拉刷新");
+                mTv.setText("up refresh");
                 break;
             case IRefreshHeader.STATE_RELEASE_TO_REFRESH:
-                mTv.setText("释放刷新");
+                mTv.setText("relrese refresh");
                 break;
             case IRefreshHeader.STATE_REFRESHING:
-                mTv.setText("正在刷新");
+                mTv.setText("refreshing");
                 break;
             case IRefreshHeader.STATE_DONE:
-                mTv.setText("刷新完成");
+                mTv.setText("refresh complete");
                 break;
         }
     }

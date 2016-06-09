@@ -94,14 +94,6 @@ public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecorat
         }
     }
 
-    /**
-     * 添加header时,分割线处理.
-     *
-     * @param i
-     * @return
-     */
-
-
     protected boolean handleDecoration(int i, RecyclerView parent, int position) {
         mHeaderViewSize = mHeaderViews.size();
 

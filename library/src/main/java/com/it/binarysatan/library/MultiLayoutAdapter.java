@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * @author BinarySatan
- * @Description 多布局adapter
  */
 public abstract class MultiLayoutAdapter<T> extends BaseAdapter<T> {
 

@@ -25,10 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 如果想要自定义分割线, 如在指定位置 显示什么样的分割线、大小、Margin等等...
- * 实现Provider 需要  adapter implements 下面对应接口,
- * 注意:  如果你实现了PaintProvider,  那么请不要实现ColorProvider and SizeProvider .
- * <p>
  *
  * @see RefreshFactory
  * @see com.it.binarysatan.library.recyclerview.decoration.FlexibleDividerDecoration.PaintProvider
@@ -41,9 +37,9 @@ import java.util.List;
  */
 public class GRecyclerView extends RecyclerView {
 
-    private boolean mIsLoadingData = false;  //是否正在加载数据
+    private boolean mIsLoadingData = false;
 
-    private boolean mIsNoMore = false;  //是否无更多数据
+    private boolean mIsNoMore = false;
 
     public ArrayList<View> mHeaderViews = new ArrayList<>();
 
@@ -53,7 +49,7 @@ public class GRecyclerView extends RecyclerView {
 
     private float mLastY = -1;
 
-    private static final float DRAG_RATE = 3; //越大越不好滑.
+    private static final float DRAG_RATE = 3;
 
     private OnRefreshListener mRefreshListener;
 
@@ -71,7 +67,6 @@ public class GRecyclerView extends RecyclerView {
 
     private static List<Integer> sHeaderTypes = new ArrayList<>();
 
-    //adapter没有数据的时候显示,类似于listView的emptyView
     private View mEmptyView;
     private final RecyclerView.AdapterDataObserver mDataObserver = new DataObserver();
 
@@ -125,9 +120,6 @@ public class GRecyclerView extends RecyclerView {
 
     }
 
-    /**
-     * 初始化view
-     */
     private void initView() {
         mRefreshFactory = new RefreshFactory();
 
@@ -138,9 +130,6 @@ public class GRecyclerView extends RecyclerView {
         mFootViews.add(mRefreshFactory.getFooterView());
     }
 
-    /**
-     * 初始化自定义属性
-     */
     private void initCusAttribute(AttributeSet attrs) {
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.GRecyclerView);
         mDividerColor = ta.getColor(R.styleable.GRecyclerView_dividerColor, mDefDividerColor);
@@ -253,9 +242,6 @@ public class GRecyclerView extends RecyclerView {
     }
 
 
-    /**
-     * 添加分割线
-     */
     private void addDecoration(Adapter adapter) {
         if (mLayoutManager == null)
             return;

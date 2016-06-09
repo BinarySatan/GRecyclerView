@@ -31,7 +31,7 @@ public abstract class BaseRefreshFooter extends BaseRefresh implements IRefreshF
     public void onMove(float delta) {
         if (getVisibleHeight() > 0 || delta > 0) {
             setVisibleHeight((int) delta + getVisibleHeight());
-            if (mState <= STATE_LOADING) { // 未处于刷新状态，更新箭头
+            if (mState <= STATE_LOADING) {
                 if (getVisibleHeight() > mMeasuredHeight) {
                     setState(STATE_RELEASE_LOAD);
                     mState =STATE_RELEASE_LOAD;
@@ -56,9 +56,6 @@ public abstract class BaseRefreshFooter extends BaseRefresh implements IRefreshF
         }, 200);
     }
 
-    /**
-     * 重置状态
-     */
     public void reset() {
         smoothScrollTo(0);
         new Handler().postDelayed(new Runnable() {
@@ -81,7 +78,7 @@ public abstract class BaseRefreshFooter extends BaseRefresh implements IRefreshF
             isOnLoad = true;
         }
 
-        int destHeight = 0; // default: 松开手指时 refreshHeader 应该到达的高度
+        int destHeight = 0;
         if (mState == STATE_LOADING) {
             destHeight = mMeasuredHeight;
         }
