@@ -7,10 +7,10 @@ ___
 
 ## Hao to use ?
 
- ### gradle<br/>
+### gradle
 `compile 'com.binarysatan:GRecyclerView:1.0'`
 
- ### maven
+### maven
  `<dependency>
   <groupId>com.binarysatan</groupId>
   <artifactId>GRecyclerView</artifactId>
