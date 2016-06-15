@@ -68,10 +68,10 @@ ___
         mGRecyclerView.setRefreshFooter(...);
     }
     
-##### if you want use adapter
+##### if you want use  normal adapter
 
          /**
-         *  nomral adapter
+         *  nomral list
          */
 
         mGRecyclerView = (GRecyclerView) findViewById(R.id.grecyclerview);
@@ -81,7 +81,7 @@ ___
             public void updateUI(BaseHolder holder, int position, String data) {
                 TextView tv = holder.getView(R.id.tv);
                 tv.setText(data);
-    
+
 
             }
 
@@ -106,10 +106,85 @@ ___
                 // dosomething for position
             }
         });
-        
-        
-        
-        
+
+
+
+
+___
+####  is support swipeAdapter
+
+
+        mGRecyclerView.setAdapter(new SwipeAdapter<String>(this, R.layout.swipeitem, mDatas, mGRecyclerView) {
+            @Override
+            public int getDeleteViewId() {
+                return R.id.ll_delete;
+            }
+
+            @Override
+            public void updateUI(BaseHolder holder, int position, String data) {
+                TextView tv = holder.getView(R.id.tv);
+                tv.setText(data);
+            }
+        });`
+
+##### for xml
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <com.it.binarysatan.library.swipelayout.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--swipe 侧滑部分-->
+    <LinearLayout
+        android:id="@+id/ll_delete"
+        android:layout_width="50dp"
+        android:background="#F00"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="删除" />
+    </LinearLayout>
+
+    <!--item  content-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    </com.it.binarysatan.library.swipelayout.SwipeLayout>
+___
+
+#### mulityAdapter
+        mGRecyclerView.setAdapter(new MultiLayoutAdapter<String>(this, mDatas, mGRecyclerView) {
+            @Override
+            public int multiLayout(int position) {
+                if(position ==1)
+                    return R.layout.listitem;
+
+                return R.layout.swipeitem;
+            }
+
+            @Override
+            public void updateMuiltUI(BaseHolder holder, int position, List<String> data) {
+                if(getLayoutId(holder) ==R.layout.listitem){
+                    //dosomething
+                }else if(getLayoutId(holder) == R.layout.swipeitem){
+                    //dosomething
+                }
+            }
+        });
+____
+
 ##### if you want set divider, it support the following attribute
 
     <declare-styleable name="GRecyclerView">
@@ -123,8 +198,8 @@ ___
         <attr name="needDivider" format="boolean" />
         <attr name="listSelector" format="reference" />
     </declare-styleable>
-    
-### Note: if you use GridLayoutManager or StaggeredGridLayoutManager, you need to use the drawable to set the divider<br/>
+
+### Note: if you use GridLayoutManager or StaggeredGridLayoutManager, you need to use the drawable to set the divider
 
 
 ##### if you want custom divier for position, you nedd custom adapter extends BaseAdapter or SwipeAdapter or MultiLayoutAdapter

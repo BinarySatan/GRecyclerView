@@ -7,11 +7,13 @@
     <LinearLayout
         android:id="@+id/ll_delete"
         android:layout_width="50dp"
+        android:background="#F00"
         android:layout_height="match_parent">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:text="删除" />
     </LinearLayout>
 
