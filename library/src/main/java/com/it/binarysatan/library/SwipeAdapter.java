@@ -59,6 +59,7 @@ public abstract class SwipeAdapter<T> extends BaseSwipeAdapter<T> {
             @Override
             public void onClick(View v) {
                 isDeleting = true;
+                deleting(mDatas.get(holder.getAdapterPosition() - mRecyclerView.getHeaderViews().size()));
                 mDatas.remove(holder.getAdapterPosition() - mRecyclerView.getHeaderViews().size());
                 notifyItemRemoved(holder.getAdapterPosition());
                 notifyItemChanged(holder.getAdapterPosition());
@@ -66,6 +67,12 @@ public abstract class SwipeAdapter<T> extends BaseSwipeAdapter<T> {
             }
         });
     }
+
+    /**
+     * 在其内进行自己需要做的删除操作, 如联网告诉后台该数据已取消
+     */
+    protected abstract void deleting(T t);
+
 
     @Override
     protected void onItemClick(BaseHolder holder, int position) {
