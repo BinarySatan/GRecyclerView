@@ -86,5 +86,5 @@ public abstract class SwipeAdapter<T> extends BaseSwipeAdapter<T> {
     }
 
     public abstract int getDeleteViewId();
-
+ 
 }
