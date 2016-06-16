@@ -1,8 +1,9 @@
 ## GRecyclerView
+
 ###### Support
-*  support BaseAdapter SwipeAdapter MultiyAdapter
-*  custom decoration
-*  custom refresh header and footer
+*  支持三种adapter,BaseAdapter(普通),MutilyAdapter(多种布局),SwipeAdapter(侧滑删除)
+*  支持分割线、也可根据position 自定义分割线
+*  支持刷新加载, 也可自己加入。 只需继承一个类。
 ___
 
 ## Hao to use ?
@@ -18,8 +19,8 @@ ___
   <type>pom</type>
 </dependency>`
 
-### if you want use custom header or footer
-##### you need custom class extends BaseRefreshHeader or BaseRefreshFooter
+### 如果想要自定义刷新头部样式 或底部加载样式
+##### 你只需要写个类 并且继承BaseRefreshHeader 或者 BaseRefreshFooter 然后根据 setState(int state)里面回传状态进行调整
 
     public class RefreshHeader extends BaseRefreshHeader {
 
@@ -62,13 +63,13 @@ ___
         return this;
     }
     }
-    
+
     class MainActivity extends Activity{
         mGRecyclerView.setRefreshHeader(new RefreshHeader());
         mGRecyclerView.setRefreshFooter(...);
     }
-    
-##### if you want use  normal adapter
+
+##### 普通的Adapter, 直接在updateUI里面更新即可.
 
          /**
          *  nomral list
@@ -111,7 +112,7 @@ ___
 
 
 ___
-####  is support swipeAdapter
+####  侧滑删除的 Adapter
 
 
         mGRecyclerView.setAdapter(new SwipeAdapter<String>(this, R.layout.swipeitem, mDatas, mGRecyclerView) {
@@ -127,7 +128,7 @@ ___
             }
         });`
 
-##### for xml
+##### XML
 
     <?xml version="1.0" encoding="utf-8"?>
     <com.it.binarysatan.library.swipelayout.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -164,7 +165,7 @@ ___
     </com.it.binarysatan.library.swipelayout.SwipeLayout>
 ___
 
-#### mulityAdapter
+#### 多种布局的Adapter
         mGRecyclerView.setAdapter(new MultiLayoutAdapter<String>(this, mDatas, mGRecyclerView) {
             @Override
             public int multiLayout(int position) {
@@ -185,7 +186,7 @@ ___
         });
 ____
 
-##### if you want set divider, it support the following attribute
+##### 分割线属性。
 
     <declare-styleable name="GRecyclerView">
         <attr name="dividerStrokeWidth" format="reference" />
@@ -199,20 +200,20 @@ ____
         <attr name="listSelector" format="reference" />
     </declare-styleable>
 
-### Note: if you use GridLayoutManager or StaggeredGridLayoutManager, you need to use the drawable to set the divider
+### 注意:如果使用 GridLayoutManager 或者 StaggeredGridLayoutManager, 如果你要给它们设置分割线,那么需要 使用drawable这个属性,不支持 dividerColor、dividerStrokeWidth.
 
 
-##### if you want custom divier for position, you nedd custom adapter extends BaseAdapter or SwipeAdapter or MultiLayoutAdapter
+##### 如果你想要根据 position 自定义 分割线的属性, 那么你只需要继承一个adapter, 然后需要实现Provider,如ColorProvider、DrawableProvider等等.
 
     public class MyAdapter extends BaseAdapter implements FlexibleDividerDecoration.ColorProvider {
-    
+
     public MyAdapter(Context context, int layoutId, List datas, GRecyclerView recyclerView) {
         super(context, layoutId, datas, recyclerView);
     }
 
     @Override
     public void updateUI(BaseHolder holder, int position, Object data) {
-        
+
     }
 
     @Override
@@ -222,13 +223,13 @@ ____
         return Color.BLACK;
     }
     }
-    
-## if you want to know more detail, to see sample
+
+## 更多细节，请参考Sample
 
 
 
-# Blog:http://blog.csdn.net/xuezhe__
-# Thanks
+# 本人博客 :Blog:http://blog.csdn.net/xuezhe__
+# 感谢
 [https://github.com/jianghejie/XRecyclerView](https://github.com/jianghejie/XRecyclerView)
 
 [https://github.com/yqritc/RecyclerView-FlexibleDivider](https://github.com/yqritc/RecyclerView-FlexibleDivider)
